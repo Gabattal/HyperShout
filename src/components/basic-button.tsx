@@ -1,13 +1,14 @@
 import {forwardRef} from "react";
 import styled from 'styled-components'
 
-export interface BasicButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface BasicButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     /** Label for the input. This should describe the value of the input. */
     label?: string;
     disabled?: boolean;
     textMessage: string;
     buttonWidth?: string;
     buttonHeight?: string;
+    functionToExecute?: any
 }
 
 export const BasicButton = forwardRef<HTMLButtonElement, BasicButtonProps>(
@@ -17,7 +18,8 @@ export const BasicButton = forwardRef<HTMLButtonElement, BasicButtonProps>(
             disabled,
             textMessage,
             buttonWidth = '300px',
-            buttonHeight = '50px'
+            buttonHeight = '50px',
+          ...buttonAttributes
         },
         ref
     ) => {
@@ -26,7 +28,9 @@ export const BasicButton = forwardRef<HTMLButtonElement, BasicButtonProps>(
             <BasicButtonStyles.button
                 ref={ref}
                 buttonWidth={buttonWidth}
-                buttonHeight={buttonHeight}>
+                buttonHeight={buttonHeight}
+                {...buttonAttributes}
+            >
                 {textMessage}
             </BasicButtonStyles.button>
         );

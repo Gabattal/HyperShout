@@ -1,5 +1,4 @@
 import './App.css'
-import {Home} from "./pages/Home";
 import {Channel} from "./pages/Channel";
 import {getAnalytics} from "firebase/analytics";
 import {initializeApp} from "firebase/app";
@@ -7,11 +6,6 @@ import {collection, getDocs, getFirestore} from "firebase/firestore/lite";
 import {useEffect} from "react";
 
 function App() {
-    useEffect(() => {
-        window.process = {
-            ...window.process,
-        };
-    }, []);
 
     const firebaseConfig = {
         apiKey: import.meta.env.VITE_API_KEY,
